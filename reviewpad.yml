@@ -1,0 +1,9 @@
+workflows:
+  - name: label-pull-request-with-size
+    run:
+      - if: $size() <= 50
+        then: $addLabel("small")
+        else:
+         - if: $size() <= 150
+           then: $addLabel("medium")
+           else: $addLabel("large")
